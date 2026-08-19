@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rose Marie Leo</title>
+  <meta name="description" content="Rose Marie Leo — Artist, Musician, Entrepreneur, Philanthropist. Oil paintings, electronic music, invention, and a life of creative leadership.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0b;
+      --bg-elevated: #121214;
+      --text: #e8e6e3;
+      --text-muted: #9a9690;
+      --accent: #c9a88a;
+      --accent-soft: #a68b6e;
+      --border: rgba(201, 168, 138, 0.18);
+      --rose: #b76e79;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* Subtle noise overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.5;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.25s ease, opacity 0.25s ease;
+    }
+
+    a:hover {
+      color: #e0c9b0;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 3rem;
+      background: linear-gradient(to bottom, rgba(10,10,11,0.92), transparent);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 6rem 3rem 4rem;
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 1.8rem;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 8vw, 5.8rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-desc {
+      max-width: 480px;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .btn-primary:hover {
+      background: #fff;
+      color: var(--bg);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 3rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .scroll-hint::before {
+      content: "↓";
+      font-size: 0.9rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 5.5rem 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+    }
+
+    /* Music grid */
+    .tracks {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .track {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr auto;
+      gap: 1.2rem;
+      align-items: baseline;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s ease;
+    }
+
+    .track:hover {
+      background: rgba(201, 168, 138, 0.04);
+    }
+
+    .track-num {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .track-title {
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .track-title a {
+      color: inherit;
+    }
+
+    .track-title a:hover {
+      color: var(--accent);
+    }
+
+    .track-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    /* Experience timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+    }
+
+    .exp-item {
+      padding-left: 1.5rem;
+      border-left: 1px solid var(--border);
+      position: relative;
+    }
+
+    .exp-item::before {
+      content: "";
+      position: absolute;
+      left: -4px;
+      top: 0.45rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .exp-role {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .exp-meta {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Art / Bio cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem;
+    }
+
+    .card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Quote */
+    .quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-style: italic;
+      line-height: 1.45;
+      color: var(--text);
+      max-width: 640px;
+      margin: 2.5rem 0;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    /* Signal / Contact */
+    .signal-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.2rem;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .signal-box p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.98rem;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      nav {
+        padding: 1.1rem 1.4rem;
+      }
+      .nav-links {
+        gap: 1.1rem;
+      }
+      .nav-links a {
+        font-size: 0.68rem;
+      }
+      .hero, section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      .scroll-hint {
+        left: 1.5rem;
+      }
+      .track {
+        grid-template-columns: 1.8rem 1fr;
+      }
+      .track-meta {
+        grid-column: 2;
+        margin-top: 0.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#" class="logo">Rose Marie Leo</a>
+    <ul class="nav-links">
+      <li><a href="#music">Music</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#art">Art</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#signal">Signal</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <p class="hero-label">Artist · Musician · Entrepreneur · Philanthropist</p>
+    <h1>Rose Marie Leo</h1>
+    <p class="hero-subtitle">Echoes across dimensions</p>
+    <p class="hero-desc">
+      From oil impressionism and landscape paintings to electronic soundscapes, 
+      event production, invention, and a lifetime of creative leadership. 
+      Based in Texas. Shaped by New York, Florida, California, and Canada.
+    </p>
+    <div class="hero-actions">
+      <a href="https://www.youtube.com/@RoseMarieLeo" target="_blank" rel="noopener" class="btn btn-primary">
+        Listen on YouTube
+      </a>
+      <a href="#journey" class="btn btn-ghost">Explore the Journey</a>
+    </div>
+    <div class="scroll-hint">Enter</div>
+  </header>
+
+  <section id="music">
+    <p class="section-label">Selected Works</p>
+    <h2>Music &amp; Sound</h2>
+    <p class="section-intro">
+      Original electronic and ambient compositions exploring space, signal, 
+      memory, and motion. Stream the full catalog on YouTube.
+    </p>
+
+    <div class="tracks">
+      <div class="track">
+        <span class="track-num">01</span>
+        <div>
+          <div class="track-title"><a href="https://www.youtube.com/watch?v=A4JynbWIjX0" target="_blank" rel="noopener">Black Rose</a></div>
+        </div>
+        <span class="track-meta">5:06</span>
+      </div>
+      <div class="track">
+        <span class="track-num">02</span>
+        <div>
+          <div class="track-title"><a href="https://www.youtube.com/watch?v=UZd_pMrb7iU" target="_blank" rel="noopener">Galactic Compute — Kardashev Type II</a></div>
+        </div>
+        <span class="track-meta">6:08</span>
+      </div>
+      <div class="track">
+        <span class="track-num">03</span>
+        <div>
+          <div class="track-title"><a href="https://www.youtube.com/watch?v=UKVhVyxsmRg" target="_blank" rel="noopener">Crimson Echoes (Little Red Dots)</a></div>
+        </div>
+        <span class="track-meta">5:40</span>
+      </div>
+      <div class="track">
+        <span class="track-num">04</span>
+        <div>
+          <div class="track-title"><a href="https://www.youtube.com/watch?v=HaLJNno3aw4" target="_blank" rel="noopener">Meat Dream Echo</a></div>
+        </div>
+        <span class="track-meta">7:01</span>
+      </div>
+      <div class="track">
+        <span class="track-num">05</span>
+        <div>
+          <div class="track-title"><a href="https://www.youtube.com/watch?v=AcZEF8v906s" target="_blank" rel="noopener">MaxQ</a></div>
+        </div>
+        <span class="track-meta">4:44</span>
+      </div>
+      <div class="track">
+        <span class="track-num">06</span>
+        <div>
+          <div class="track-title"><a href="https://www.youtube.com/watch?v=8UYz6gYLCsM" target="_blank" rel="noopener">Wired Whole NEURALINK</a></div>
+        </div>
+        <span class="track-meta">5:51</span>
+      </div>
+      <div class="track">
+        <span class="track-num">07</span>
+        <div>
+          <div class="track-title"><a href="https://www.youtube.com/watch?v=C-R1Y5qE_hs" target="_blank" rel="noopener">Orbital March of the Ten Thousand</a></div>
+        </div>
+        <span class="track-meta">4:16</span>
+      </div>
+      <div class="track">
+        <span class="track-num">08</span>
+        <div>
+          <div class="track-title"><a href="https://www.youtube.com/watch?v=JJhYOPzAE8M" target="_blank" rel="noopener">Supersonic Love</a></div>
+        </div>
+        <span class="track-meta">6:21</span>
+      </div>
+    </div>
+
+    <p style="margin-top: 2.2rem;">
+      <a href="https://www.youtube.com/@RoseMarieLeo" target="_blank" rel="noopener">View full channel &amp; playlists →</a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="https://www.youtube.com/playlist?list=PLIPA_7vRfhdE" target="_blank" rel="noopener">Roses New WAVE Music</a>
+    </p>
+  </section>
+
+  <section id="journey">
+    <p class="section-label">Professional Experience</p>
+    <h2>A Life of Initiative</h2>
+    <p class="section-intro">
+      Decades of leadership across legal practice, media strategy, event production, 
+      fashion, invention, and the arts — spanning New York, Florida, California, Canada, and Texas.
+    </p>
+
+    <div class="timeline">
+      <div class="exp-item">
+        <div class="exp-role">Working Artist</div>
+        <div class="exp-meta">Self-employed · January 2009 – Present</div>
+        <div class="exp-desc">Specializes in oil impressionism and landscape oil paintings. Social media and art marketing.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-role">Ghostwriter</div>
+        <div class="exp-meta">2020 – 2024</div>
+        <div class="exp-desc">Assisting individuals in the confidential writing, editing, design, and publication of personal life stories. “If it is not written down for history to read, you never really existed.”</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-role">Business Fashion Design Consultant</div>
+        <div class="exp-meta">Self-employed · Boca Raton, Florida · February 2010 – Present</div>
+        <div class="exp-desc">Consulting for fashion designers aiming to establish their own studios.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-role">Trusted Source | Media Strategist</div>
+        <div class="exp-meta">Self-employed contractor · West Palm Beach, Florida &amp; California · 2009 – 2023</div>
+        <div class="exp-desc">Strategic assistance to private and public client groups and individuals.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-role">Media Relations Coordinator — Booker</div>
+        <div class="exp-meta">Guido George Lombardi · West Palm Beach · May 2016 – February 2018</div>
+        <div class="exp-desc">Coordinated Donald J. Trump 2016 online media campaign. Supported book marketing and personal media for business, politics, and economics.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-role">Florida Event Coordinator — The Inventors Road Show™</div>
+        <div class="exp-meta">Boca Raton · November 2015 – July 2016</div>
+        <div class="exp-desc">Organized workshops empowering inventors to bring ideas to industry. Founded by award-winning inventor Rose Marie. Partnerships with HSN, As Seen On TV, mass retailers.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-role">Sr. Federal and State Paralegal (Complex Litigation)</div>
+        <div class="exp-meta">September 2000 – 2020</div>
+        <div class="exp-desc">Complex litigation specialist under attorney supervision. Expertise spanning general liability, trucking, auto, subrogation, workers’ compensation, property, professional liability, construction defect, and more. Full-cycle trial support, research, discovery, and claims assistance.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-role">President &amp; CEO — MTTN, Inc.</div>
+        <div class="exp-meta">Boca Raton, Florida · January 2001 – 2020</div>
+        <div class="exp-desc">Private client group services including notary, barter and trade, and focus groups. Profit contract work for diverse clients.</div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-role">Florida Notary Public at Large</div>
+        <div class="exp-meta">January 2000 – 2020</div>
+        <div class="exp-desc">Mobile notary services in Boca Raton and surrounding areas.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="art">
+    <p class="section-label">Creative Practice</p>
+    <h2>Canvas &amp; Stage</h2>
+    <p class="section-intro">
+      A continuous thread of artistic expression — from oil paintings to fashion 
+      production, talent management, and live events.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Oil Impressionism</h3>
+        <p>Landscape and impressionist works created since 2009. Exhibitions and social media marketing of original paintings.</p>
+      </div>
+      <div class="card">
+        <h3>Fashion &amp; Production</h3>
+        <p>Business consultant for designers. Produced and coordinated fashion shows across Florida, North Carolina, Canada, and New York, including Mar-a-Lago and Fort Lauderdale Fashion Week.</p>
+      </div>
+      <div class="card">
+        <h3>Event &amp; Talent</h3>
+        <p>Media buying, corporate event management, talent acquisition, manners workshops, symposiums, and fundraising galas from inception through follow-up.</p>
+      </div>
+      <div class="card">
+        <h3>Invention</h3>
+        <p>Founder of The Inventors Road Show™ — educating inventors on patents, branding, capital, and commercialization pathways.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <p class="section-label">The Story</p>
+    <h2>Atmosphere, leadership, and the work of building</h2>
+    <p class="section-intro">
+      Rose Marie is an accomplished professional whose career spans entrepreneurial 
+      ventures, event management, celebrity promotions, legal support, and the arts 
+      across New York, Canada, Florida, and California. She currently resides in Texas.
+    </p>
+    <p class="section-intro" style="margin-top: -1rem;">
+      Throughout her career she has consistently demonstrated outstanding leadership, 
+      project management, and business analysis skills. She is also a skilled Compliance 
+      Specialist. Her roles weave together legal precision, artistic vision, marketing 
+      strategy, and entrepreneurial drive.
+    </p>
+
+    <blockquote class="quote">
+      “If it is not written down for history to read, you never really existed.”
+    </blockquote>
+
+    <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 560px;">
+      Current and ongoing: Retired actress · Philanthropist · Ghostwriter · Working Artist · Fashion Design Consultant.
+    </p>
+  </section>
+
+  <section id="signal">
+    <p class="section-label">Leave a Note</p>
+    <h2>The Signal</h2>
+    <div class="signal-box">
+      <p>
+        Share a brief thought about a track, a painting, an invention, or whatever still resonates.<br>
+        One note per visitor.
+      </p>
+      <a href="https://www.youtube.com/@RoseMarieLeo" target="_blank" rel="noopener" class="btn btn-primary">
+        Visit the Channel
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Rose Marie Leo · Texas · Music · Art · Enterprise</p>
+    <p style="margin-top: 0.6rem; opacity: 0.6;">
+      <a href="https://www.youtube.com/@RoseMarieLeo">YouTube</a>
+      &nbsp;·&nbsp;
+      Views and opinions expressed are those of the named individual.
+    </p>
+  </footer>
+</body>
+</html>
